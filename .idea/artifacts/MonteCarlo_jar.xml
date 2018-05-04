@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="MonteCarlo:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/MonteCarlo_jar</output-path>
+    <root id="archive" name="MonteCarlo.jar">
+      <element id="module-output" name="MonteCarlo" />
+    </root>
+  </artifact>
+</component>

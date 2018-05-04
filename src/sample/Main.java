@@ -80,9 +80,11 @@ public class Main extends Application {
                 int liczba = Integer.parseInt(textField.getText());
                 int x1;
                 int y1;
-                group.getChildren().removeAll(group);
-//                group.getChildren().addAll(textField, startButton, r, c);
+                group.getChildren().clear();
+                group.getChildren().addAll(textField, startButton, r, c, inside, insideValue, pi, piValue);
 
+                mc.setLicznik(0);
+                mc.setPi(0);
                 mc.setAll(liczba);
 
 

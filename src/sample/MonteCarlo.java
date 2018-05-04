@@ -24,6 +24,14 @@ public class MonteCarlo {
         return pi;
     }
 
+    public void setLicznik(int licznik) {
+        this.licznik = licznik;
+    }
+
+    public void setPi(double pi) {
+        this.pi = pi;
+    }
+
     public int randomPointX(int minWidth, int maxWidth) {
         int X = 0;
 
