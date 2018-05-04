@@ -16,8 +16,7 @@ public class MonteCarlo {
         return licznik;
     }
 
-    public void setAll(int all)
-    {
+    public void setAll(int all) {
         this.all = all;
     }
 
@@ -25,39 +24,34 @@ public class MonteCarlo {
         return pi;
     }
 
-    public  int randomPointX(int minWidth, int maxWidth)
-    {
+    public int randomPointX(int minWidth, int maxWidth) {
         int X = 0;
 
         Random random = new Random();
-        X = random.nextInt(maxWidth-minWidth)+minWidth;
+        X = random.nextInt(maxWidth - minWidth) + minWidth;
 
         return X;
     }
 
-    public int randomPointY(int minHeight, int maxHeight)
-    {
+    public int randomPointY(int minHeight, int maxHeight) {
         int Y = 0;
 
         Random random = new Random();
-        Y = random.nextInt(maxHeight-minHeight)+minHeight;
+        Y = random.nextInt(maxHeight - minHeight) + minHeight;
 
         return Y;
     }
 
-    public void checkConsistance(int x, int y)
-    {
+    public void checkConsistance(int x, int y) {
         int result = ((int) Math.pow((double) (x - 300), 2) + (int) Math.pow((double) (y - 175), 2));
 
-        if(result <= (int) Math.pow(125, 2))
-        {
+        if (result <= (int) Math.pow(125, 2)) {
             licznik++;
         }
     }
 
-    public void calculatePI()
-    {
-        double result = (double) 4*licznik/all;
+    public void calculatePI() {
+        double result = (double) 4 * licznik / all;
         pi = result;
 
         System.out.println("Wartość PI: " + result);

@@ -18,8 +18,8 @@ import javafx.stage.Stage;
 public class Main extends Application {
 
     @Override
-    public void start(Stage primaryStage) throws Exception{
-       // Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
+    public void start(Stage primaryStage) throws Exception {
+        // Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
         primaryStage.setTitle("Obliczanie PI");
         primaryStage.setResizable(false);
 
@@ -27,26 +27,26 @@ public class Main extends Application {
 
         Scene mainScene = new Scene(group, 600, 600, Color.GREY);
 
-        int rectYMIN = (int) (mainScene.getHeight()/2)-250;
-        int rectYMAX = (int) (mainScene.getHeight()/2);
+        int rectYMIN = (int) (mainScene.getHeight() / 2) - 250;
+        int rectYMAX = (int) (mainScene.getHeight() / 2);
 
-        int rectXMIN = (int) (mainScene.getWidth()/2)-125;
-        int rectXMAX = (int) (mainScene.getWidth()/2)+125;
+        int rectXMIN = (int) (mainScene.getWidth() / 2) - 125;
+        int rectXMAX = (int) (mainScene.getWidth() / 2) + 125;
 
         MonteCarlo mc = new MonteCarlo();
 
-        Rectangle r = new Rectangle((mainScene.getWidth()/2)-125, (mainScene.getHeight()/2)-250, 250, 250);
+        Rectangle r = new Rectangle((mainScene.getWidth() / 2) - 125, (mainScene.getHeight() / 2) - 250, 250, 250);
         r.setStroke(Color.BLACK);
         r.setFill(Color.WHITE);
 
-        Circle c = new Circle((mainScene.getWidth()/2), (mainScene.getHeight()/2)-125, 125);
+        Circle c = new Circle((mainScene.getWidth() / 2), (mainScene.getHeight() / 2) - 125, 125);
         c.setStroke(Color.BLACK);
         c.setFill(Color.WHITE);
 
         TextField textField = new TextField("Wpisz ilość punktów");
         textField.setPrefWidth(200);
-        textField.setLayoutX((mainScene.getWidth()/2)-100);
-        textField.setLayoutY(mainScene.getHeight()-150);
+        textField.setLayoutX((mainScene.getWidth() / 2) - 100);
+        textField.setLayoutY(mainScene.getHeight() - 150);
 
         Label inside = new Label("Wewnątrz: ");
         inside.setLayoutX(125);
@@ -66,8 +66,8 @@ public class Main extends Application {
 
         Button startButton = new Button("Start!");
         startButton.setPrefWidth(50);
-        startButton.setLayoutX((mainScene.getWidth()/2)-25);
-        startButton.setLayoutY(mainScene.getHeight()-100);
+        startButton.setLayoutX((mainScene.getWidth() / 2) - 25);
+        startButton.setLayoutY(mainScene.getHeight() - 100);
 
 
         startButton.setOnAction(new javafx.event.EventHandler<ActionEvent>() {
@@ -86,10 +86,8 @@ public class Main extends Application {
                 mc.setAll(liczba);
 
 
-                for (int i=0; i< liczba; i++)
-                {
+                for (int i = 0; i < liczba; i++) {
                     Line line = new Line();
-
 
 
                     x1 = mc.randomPointX(rectXMIN, rectXMAX);
@@ -128,7 +126,6 @@ public class Main extends Application {
         primaryStage.setScene(mainScene);
         primaryStage.show();
     }
-
 
 
     public static void main(String[] args) {
