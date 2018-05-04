@@ -6,6 +6,7 @@ public class MonteCarlo {
 
     private int licznik = 0;
     private int all;
+    private double pi;
 
     public MonteCarlo() {
 
@@ -20,6 +21,9 @@ public class MonteCarlo {
         this.all = all;
     }
 
+    public double getPi() {
+        return pi;
+    }
 
     public  int randomPointX(int minWidth, int maxWidth)
     {
@@ -54,6 +58,7 @@ public class MonteCarlo {
     public void calculatePI()
     {
         double result = (double) 4*licznik/all;
+        pi = result;
 
         System.out.println("Wartość PI: " + result);
     }

@@ -7,6 +7,7 @@ import javafx.scene.Group;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
@@ -46,6 +47,22 @@ public class Main extends Application {
         textField.setPrefWidth(200);
         textField.setLayoutX((mainScene.getWidth()/2)-100);
         textField.setLayoutY(mainScene.getHeight()-150);
+
+        Label inside = new Label("Wewnątrz: ");
+        inside.setLayoutX(125);
+        inside.setLayoutY(350);
+
+        Label insideValue = new Label("0");
+        insideValue.setLayoutX(200);
+        insideValue.setLayoutY(350);
+
+        Label pi = new Label("Wartość π: ");
+        pi.setLayoutX(125);
+        pi.setLayoutY(400);
+
+        Label piValue = new Label("0");
+        piValue.setLayoutX(200);
+        piValue.setLayoutY(400);
 
         Button startButton = new Button("Start!");
         startButton.setPrefWidth(50);
@@ -99,11 +116,14 @@ public class Main extends Application {
                     group.getChildren().addAll(l[i]);
                     mc.calculatePI();
 
+                    insideValue.setText(new String(String.valueOf(mc.getLicznik())));
+                    piValue.setText(new String(String.valueOf(mc.getPi())));
+
                 }
             }
         });
 
-        group.getChildren().addAll(textField, startButton, r, c);
+        group.getChildren().addAll(textField, startButton, r, c, inside, insideValue, pi, piValue);
 
         primaryStage.setScene(mainScene);
         primaryStage.show();
