@@ -20,7 +20,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         // Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
-        primaryStage.setTitle("Obliczanie PI");
+        primaryStage.setTitle("Obliczanie π");
         primaryStage.setResizable(false);
 
         Group group = new Group();
@@ -64,7 +64,7 @@ public class Main extends Application {
         piValue.setLayoutX(200);
         piValue.setLayoutY(400);
 
-        Button startButton = new Button("Start!");
+        Button startButton = new Button("Oblicz!");
         startButton.setPrefWidth(50);
         startButton.setLayoutX((mainScene.getWidth() / 2) - 25);
         startButton.setLayoutY(mainScene.getHeight() - 100);
