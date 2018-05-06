@@ -65,8 +65,8 @@ public class Main extends Application {
         piValue.setLayoutY(400);
 
         Button startButton = new Button("Start!");
-        startButton.setPrefWidth(50);
-        startButton.setLayoutX((mainScene.getWidth() / 2) - 25);
+        startButton.setPrefWidth(100);
+        startButton.setLayoutX((mainScene.getWidth() / 2) - 50);
         startButton.setLayoutY(mainScene.getHeight() - 100);
 
 
