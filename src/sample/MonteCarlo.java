@@ -1,5 +1,9 @@
 package sample;
 
+import javafx.scene.paint.Color;
+
+import javafx.scene.shape.Line;
+
 import java.util.Random;
 
 public class MonteCarlo {
@@ -50,11 +54,12 @@ public class MonteCarlo {
         return Y;
     }
 
-    public void checkConsistance(int x, int y) {
+    public void checkConsistance(int x, int y, Line l) {
         int result = ((int) Math.pow((double) (x - 300), 2) + (int) Math.pow((double) (y - 175), 2));
 
         if (result <= (int) Math.pow(125, 2)) {
             licznik++;
+            l.setStroke(Color.BLUE);
         }
     }
 

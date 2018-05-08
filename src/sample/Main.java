@@ -15,6 +15,8 @@ import javafx.scene.shape.Line;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
+import java.awt.*;
+
 public class Main extends Application {
 
     @Override
@@ -27,21 +29,24 @@ public class Main extends Application {
 
         Scene mainScene = new Scene(group, 600, 600, Color.GREY);
 
-        int rectYMIN = (int) (mainScene.getHeight() / 2) - 250;
-        int rectYMAX = (int) (mainScene.getHeight() / 2);
+        int rectYMIN = (int) (mainScene.getHeight() / 2) - 245;
+        int rectYMAX = (int) (mainScene.getHeight() / 2) - 5;
 
-        int rectXMIN = (int) (mainScene.getWidth() / 2) - 125;
-        int rectXMAX = (int) (mainScene.getWidth() / 2) + 125;
+        int rectXMIN = (int) (mainScene.getWidth() / 2) - 120;
+        int rectXMAX = (int) (mainScene.getWidth() / 2) + 120;
 
         MonteCarlo mc = new MonteCarlo();
 
         Rectangle r = new Rectangle((mainScene.getWidth() / 2) - 125, (mainScene.getHeight() / 2) - 250, 250, 250);
         r.setStroke(Color.BLACK);
         r.setFill(Color.WHITE);
+        r.setStrokeWidth(5);
+
 
         Circle c = new Circle((mainScene.getWidth() / 2), (mainScene.getHeight() / 2) - 125, 125);
         c.setStroke(Color.BLACK);
         c.setFill(Color.WHITE);
+        c.setStrokeWidth(5);
 
         TextField textField = new TextField("Wpisz ilość punktów");
         textField.setPrefWidth(200);
@@ -98,15 +103,18 @@ public class Main extends Application {
                     line.setStartX(x1);
                     line.setEndX(x1);
 
+                    System.out.println("Iteracja nr: " + i);
                     System.out.println(line.getStartX() + " " + line.getEndX());
 
                     line.setStartY(y1);
                     line.setEndY(y1);
+                    line.setStroke(Color.RED);
 
-                    mc.checkConsistance(x1, y1);
+
+                    mc.checkConsistance(x1, y1, line);
                     System.out.println(mc.getLicznik());
 
-                    line.setStrokeWidth(7);
+                    line.setStrokeWidth(3);
 
                     System.out.println(line.getStartY() + " " + line.getEndY());
 
@@ -114,17 +122,23 @@ public class Main extends Application {
                     l[i] = line;
 
                     group.getChildren().addAll(l[i]);
+
+//                    mainScene.setRoot(group);
+//                    primaryStage.show();
+
                     mc.calculatePI();
 
                     insideValue.setText(new String(String.valueOf(mc.getLicznik())));
                     piValue.setText(new String(String.valueOf(mc.getPi())));
 
+
                 }
+                mainScene.setRoot(group);
+                primaryStage.show();
             }
         });
 
         group.getChildren().addAll(textField, startButton, r, c, inside, insideValue, pi, piValue);
-
         primaryStage.setScene(mainScene);
         primaryStage.show();
     }
