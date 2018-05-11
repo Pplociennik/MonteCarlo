@@ -3,10 +3,7 @@ package sample;
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
-import javafx.fxml.FXMLLoader;
-import javafx.geometry.Point2D;
 import javafx.scene.Group;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -16,10 +13,6 @@ import javafx.scene.shape.Circle;
 import javafx.scene.shape.Line;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
-
-import java.lang.Object;
-
-import java.awt.*;
 
 public class Main extends Application {
 
@@ -39,7 +32,6 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        // Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
         primaryStage.setTitle("Obliczanie π");
         primaryStage.setResizable(false);
 
@@ -134,8 +126,8 @@ public class Main extends Application {
                 line.setStartX(x1);
                 line.setEndX(x1);
 
-                System.out.println("Iteracja nr: " + i);
-                System.out.println(line.getStartX() + " " + line.getEndX());
+                System.out.println("Iteration nr: " + i);
+                System.out.println("X line coords: " + line.getStartX() + " " + line.getEndX());
 
                 line.setStartY(y1);
                 line.setEndY(y1);
@@ -143,11 +135,11 @@ public class Main extends Application {
 
 
                 mc.checkConsistance(x1, y1, line);
-                System.out.println(mc.getLicznik());
+                System.out.println("Points inside circle: " + mc.getLicznik());
 
                 line.setStrokeWidth(3);
 
-                System.out.println(line.getStartY() + " " + line.getEndY());
+                System.out.println("Y line coords: " + line.getStartY() + " " + line.getEndY());
 
                 Line[] l = new Line[liczba];
                 l[i] = line;
@@ -163,6 +155,8 @@ public class Main extends Application {
                 insideValue.setText(new String(String.valueOf(mc.getLicznik())));
                 piValue.setText(new String(String.valueOf(mc.getPi())));
                 itNR.setText(new String(String.valueOf(i)));
+
+                System.out.println("\n");
 
                 if (i == liczba) {
                     this.stop();
@@ -180,7 +174,8 @@ public class Main extends Application {
                     errorStage.show();
                 } else {
 
-                    System.out.println("Siema");
+                    System.out.println("Application started...");
+                    System.out.println("\n" + "Circle and Rectangle center coordinates: ");
                     System.out.println("X: " + c.getCenterX() + ", Y: " + c.getCenterY());
 
                     i = 0;

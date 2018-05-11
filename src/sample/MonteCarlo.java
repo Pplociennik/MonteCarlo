@@ -67,6 +67,6 @@ public class MonteCarlo {
         double result = (double) 4 * licznik / all;
         pi = result;
 
-        System.out.println("Wartość PI: " + result);
+        System.out.println("Value of PI: " + result);
     }
 }
