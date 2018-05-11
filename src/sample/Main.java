@@ -174,7 +174,7 @@ public class Main extends Application {
             @Override
             public void handle(ActionEvent event) {
 
-                if (isInt(textField.getText()) == false || Integer.parseInt(textField.getText()) < 0) {
+                if (isInt(textField.getText()) == false || Integer.parseInt(textField.getText()) <= 0) {
                     errorScene.setRoot(errorGroup);
                     errorStage.setScene(errorScene);
                     errorStage.show();
