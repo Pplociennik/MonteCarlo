@@ -48,11 +48,11 @@ public class Main extends Application {
 
         Scene mainScene = new Scene(group, 600, 600, Color.GREY);
 
-        int rectYMIN = (int) (mainScene.getHeight() / 2) - 245;
-        int rectYMAX = (int) (mainScene.getHeight() / 2) - 5;
+        int rectYMIN = (int) (mainScene.getHeight() / 2) - 246;
+        int rectYMAX = (int) (mainScene.getHeight() / 2) - 3;
 
-        int rectXMIN = (int) (mainScene.getWidth() / 2) - 120;
-        int rectXMAX = (int) (mainScene.getWidth() / 2) + 120;
+        int rectXMIN = (int) (mainScene.getWidth() / 2) - 121;
+        int rectXMAX = (int) (mainScene.getWidth() / 2) + 122;
 
         MonteCarlo mc = new MonteCarlo();
 
