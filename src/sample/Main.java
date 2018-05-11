@@ -1,8 +1,10 @@
 package sample;
 
+import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Point2D;
 import javafx.scene.Group;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -15,9 +17,15 @@ import javafx.scene.shape.Line;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
+import java.lang.Object;
+
 import java.awt.*;
 
 public class Main extends Application {
+
+    int i = 0;
+    int liczba = 1;
+
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -26,6 +34,7 @@ public class Main extends Application {
         primaryStage.setResizable(false);
 
         Group group = new Group();
+
 
         Scene mainScene = new Scene(group, 600, 600, Color.GREY);
 
@@ -61,6 +70,7 @@ public class Main extends Application {
         insideValue.setLayoutX(200);
         insideValue.setLayoutY(350);
 
+
         Label pi = new Label("Wartość π: ");
         pi.setLayoutX(125);
         pi.setLayoutY(400);
@@ -69,11 +79,73 @@ public class Main extends Application {
         piValue.setLayoutX(200);
         piValue.setLayoutY(400);
 
+        Label iterationNumber = new Label("Iteracja nr:");
+        iterationNumber.setLayoutX(400);
+        iterationNumber.setLayoutY(375);
+
+        Label itNR = new Label("0");
+        itNR.setLayoutX(475);
+        itNR.setLayoutY(375);
+
         Button startButton = new Button("Start!");
         startButton.setPrefWidth(100);
         startButton.setLayoutX((mainScene.getWidth() / 2) - 50);
         startButton.setLayoutY(mainScene.getHeight() - 100);
 
+        AnimationTimer t = new AnimationTimer() {
+            @Override
+            public void handle(long now) {
+
+                liczba = Integer.parseInt(textField.getText());
+                int x1;
+                int y1;
+
+                Line line = new Line();
+
+
+                x1 = mc.randomPointX(rectXMIN, rectXMAX);
+                y1 = mc.randomPointY(rectYMIN, rectYMAX);
+
+                mc.setAll(liczba);
+
+                line.setStartX(x1);
+                line.setEndX(x1);
+
+                System.out.println("Iteracja nr: " + i);
+                System.out.println(line.getStartX() + " " + line.getEndX());
+
+                line.setStartY(y1);
+                line.setEndY(y1);
+                line.setStroke(Color.RED);
+
+
+                mc.checkConsistance(x1, y1, line);
+                System.out.println(mc.getLicznik());
+
+                line.setStrokeWidth(3);
+
+                System.out.println(line.getStartY() + " " + line.getEndY());
+
+                Line[] l = new Line[liczba];
+                l[i] = line;
+
+                group.getChildren().addAll(l[i]);
+
+
+                mc.calculatePI();
+
+
+                ++i;
+
+                insideValue.setText(new String(String.valueOf(mc.getLicznik())));
+                piValue.setText(new String(String.valueOf(mc.getPi())));
+                itNR.setText(new String(String.valueOf(i)));
+
+                if (i == liczba) {
+                    this.stop();
+                }
+            }
+        };
 
         startButton.setOnAction(new javafx.event.EventHandler<ActionEvent>() {
             @Override
@@ -82,63 +154,23 @@ public class Main extends Application {
                 System.out.println("Siema");
                 System.out.println("X: " + c.getCenterX() + ", Y: " + c.getCenterY());
 
-                int liczba = Integer.parseInt(textField.getText());
-                int x1;
-                int y1;
+                i = 0;
+
+                t.start();
+
                 group.getChildren().clear();
-                group.getChildren().addAll(textField, startButton, r, c, inside, insideValue, pi, piValue);
+                group.getChildren().addAll(textField, startButton, r, c, inside, insideValue, pi, piValue, iterationNumber, itNR);
 
                 mc.setLicznik(0);
                 mc.setPi(0);
                 mc.setAll(liczba);
 
 
-                for (int i = 0; i < liczba; i++) {
-                    Line line = new Line();
-
-
-                    x1 = mc.randomPointX(rectXMIN, rectXMAX);
-                    y1 = mc.randomPointY(rectYMIN, rectYMAX);
-
-                    line.setStartX(x1);
-                    line.setEndX(x1);
-
-                    System.out.println("Iteracja nr: " + i);
-                    System.out.println(line.getStartX() + " " + line.getEndX());
-
-                    line.setStartY(y1);
-                    line.setEndY(y1);
-                    line.setStroke(Color.RED);
-
-
-                    mc.checkConsistance(x1, y1, line);
-                    System.out.println(mc.getLicznik());
-
-                    line.setStrokeWidth(3);
-
-                    System.out.println(line.getStartY() + " " + line.getEndY());
-
-                    Line[] l = new Line[liczba];
-                    l[i] = line;
-
-                    group.getChildren().addAll(l[i]);
-
-//                    mainScene.setRoot(group);
-//                    primaryStage.show();
-
-                    mc.calculatePI();
-
-                    insideValue.setText(new String(String.valueOf(mc.getLicznik())));
-                    piValue.setText(new String(String.valueOf(mc.getPi())));
-
-
-                }
-                mainScene.setRoot(group);
-                primaryStage.show();
             }
         });
 
-        group.getChildren().addAll(textField, startButton, r, c, inside, insideValue, pi, piValue);
+        group.getChildren().addAll(textField, startButton, r, c, inside, insideValue, pi, piValue, iterationNumber, itNR);
+        mainScene.setRoot(group);
         primaryStage.setScene(mainScene);
         primaryStage.show();
     }
