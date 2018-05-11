@@ -26,12 +26,30 @@ public class Main extends Application {
     int i = 0;
     int liczba = 1;
 
+    public static boolean isInt(String str) {
+        try {
+            Integer.parseInt(str);
+        } catch (NumberFormatException e) {
+            return false;
+        }
+
+        return true;
+    }
+
 
     @Override
     public void start(Stage primaryStage) throws Exception {
         // Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
         primaryStage.setTitle("Obliczanie π");
         primaryStage.setResizable(false);
+
+        Stage errorStage = new Stage();
+        errorStage.setTitle("Błąd!");
+        errorStage.setResizable(false);
+
+        Group errorGroup = new Group();
+
+        Scene errorScene = new Scene(errorGroup, 200, 100);
 
         Group group = new Group();
 
@@ -86,6 +104,11 @@ public class Main extends Application {
         Label itNR = new Label("0");
         itNR.setLayoutX(475);
         itNR.setLayoutY(375);
+
+        Label error = new Label("Wpisz liczbę >0!");
+        error.setLayoutX(errorScene.getWidth() / 2 - (errorScene.getWidth() / 4));
+        error.setLayoutY(errorScene.getHeight() / 2);
+        errorGroup.getChildren().add(error);
 
         Button startButton = new Button("Start!");
         startButton.setPrefWidth(100);
@@ -151,19 +174,26 @@ public class Main extends Application {
             @Override
             public void handle(ActionEvent event) {
 
-                System.out.println("Siema");
-                System.out.println("X: " + c.getCenterX() + ", Y: " + c.getCenterY());
+                if (isInt(textField.getText()) == false || Integer.parseInt(textField.getText()) < 0) {
+                    errorScene.setRoot(errorGroup);
+                    errorStage.setScene(errorScene);
+                    errorStage.show();
+                } else {
 
-                i = 0;
+                    System.out.println("Siema");
+                    System.out.println("X: " + c.getCenterX() + ", Y: " + c.getCenterY());
 
-                t.start();
+                    i = 0;
 
-                group.getChildren().clear();
-                group.getChildren().addAll(textField, startButton, r, c, inside, insideValue, pi, piValue, iterationNumber, itNR);
+                    t.start();
 
-                mc.setLicznik(0);
-                mc.setPi(0);
-                mc.setAll(liczba);
+                    group.getChildren().clear();
+                    group.getChildren().addAll(textField, startButton, r, c, inside, insideValue, pi, piValue, iterationNumber, itNR);
+
+                    mc.setLicznik(0);
+                    mc.setPi(0);
+                    mc.setAll(liczba);
+                }
 
 
             }
