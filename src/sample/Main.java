@@ -76,6 +76,27 @@ public class Main extends Application {
         inside.setLayoutX(125);
         inside.setLayoutY(350);
 
+        Line x_axis = new Line();
+        x_axis.setStartX(100);
+        x_axis.setEndX(mainScene.getWidth()-135);
+        x_axis.setStartY(325);
+        x_axis.setEndY(325);
+
+        Line y_axis = new Line();
+        y_axis.setStartX(150);
+        y_axis.setEndX(150);
+        y_axis.setStartY(335);
+        y_axis.setEndY(25);
+
+        Label xAxisName = new Label("X");
+        xAxisName.setLayoutX(mainScene.getWidth()-155);
+        xAxisName.setLayoutY(330);
+
+        Label yAxisName = new Label("Y");
+        yAxisName.setLayoutX(140);
+        yAxisName.setLayoutY(40);
+
+
         Label insideValue = new Label("0");
         insideValue.setLayoutX(200);
         insideValue.setLayoutY(350);
@@ -183,7 +204,7 @@ public class Main extends Application {
                     t.start();
 
                     group.getChildren().clear();
-                    group.getChildren().addAll(textField, startButton, r, c, inside, insideValue, pi, piValue, iterationNumber, itNR);
+                    group.getChildren().addAll(textField, startButton, r, c, inside, insideValue, pi, piValue, iterationNumber, itNR, x_axis, y_axis, xAxisName, yAxisName);
 
                     mc.setLicznik(0);
                     mc.setPi(0);
@@ -194,7 +215,7 @@ public class Main extends Application {
             }
         });
 
-        group.getChildren().addAll(textField, startButton, r, c, inside, insideValue, pi, piValue, iterationNumber, itNR);
+        group.getChildren().addAll(textField, startButton, r, c, inside, insideValue, pi, piValue, iterationNumber, itNR, x_axis, y_axis, xAxisName, yAxisName);
         mainScene.setRoot(group);
         primaryStage.setScene(mainScene);
         primaryStage.show();
