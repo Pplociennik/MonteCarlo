@@ -78,7 +78,7 @@ public class Main extends Application {
 
         Line x_axis = new Line();
         x_axis.setStartX(100);
-        x_axis.setEndX(mainScene.getWidth()-135);
+        x_axis.setEndX(mainScene.getWidth() - 135);
         x_axis.setStartY(325);
         x_axis.setEndY(325);
 
@@ -89,7 +89,7 @@ public class Main extends Application {
         y_axis.setEndY(25);
 
         Label xAxisName = new Label("X");
-        xAxisName.setLayoutX(mainScene.getWidth()-155);
+        xAxisName.setLayoutX(mainScene.getWidth() - 155);
         xAxisName.setLayoutY(330);
 
         Label yAxisName = new Label("Y");
