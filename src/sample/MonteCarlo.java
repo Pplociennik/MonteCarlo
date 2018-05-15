@@ -63,7 +63,7 @@ public class MonteCarlo {
     }
 
     public void calculatePI() {
-        double result = (double) 4 * licznik / all;
+        double result = 4.0*((double)licznik / (double)all);
         pi = result;
 
         System.out.println("Value of PI: " + result);
