@@ -168,7 +168,7 @@ public class Main extends Application {
                 group.getChildren().addAll(l[i]);
 
 
-                mc.calculatePI();
+                mc.calculatePI(i+1);
 
 
                 ++i;
