@@ -66,6 +66,6 @@ public class MonteCarlo {
         double result = 4.0*((double)licznik / (double)temp);
         pi = result;
 
-        System.out.println("Value of PI: " + result);
+        //System.out.println("Value of PI: " + result);
     }
 }
