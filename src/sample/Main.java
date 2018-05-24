@@ -147,7 +147,7 @@ public class Main extends Application {
                 line.setStartX(x1);
                 line.setEndX(x1);
 
-               // System.out.println("Iteration nr: " + i);
+                // System.out.println("Iteration nr: " + i);
                 //System.out.println("X line coords: " + line.getStartX() + " " + line.getEndX());
 
                 line.setStartY(y1);
@@ -156,11 +156,11 @@ public class Main extends Application {
 
 
                 mc.checkConsistance(x1, y1, line);
-               // System.out.println("Points inside circle: " + mc.getLicznik());
+                // System.out.println("Points inside circle: " + mc.getLicznik());
 
                 line.setStrokeWidth(3);
 
-               // System.out.println("Y line coords: " + line.getStartY() + " " + line.getEndY());
+                // System.out.println("Y line coords: " + line.getStartY() + " " + line.getEndY());
 
                 Line[] l = new Line[liczba];
                 l[i] = line;
@@ -168,7 +168,7 @@ public class Main extends Application {
                 group.getChildren().addAll(l[i]);
 
 
-                mc.calculatePI(i+1);
+                mc.calculatePI(i + 1);
 
 
                 ++i;
@@ -177,7 +177,7 @@ public class Main extends Application {
                 piValue.setText(new String(String.valueOf(mc.getPi())));
                 itNR.setText(new String(String.valueOf(i)));
 
-              //  System.out.println("\n");
+                //  System.out.println("\n");
 
                 if (i == liczba) {
                     this.stop();
@@ -195,9 +195,9 @@ public class Main extends Application {
                     errorStage.show();
                 } else {
 
-                 //   System.out.println("Application started...");
-                 //   System.out.println("\n" + "Circle and Rectangle center coordinates: ");
-                  //  System.out.println("X: " + c.getCenterX() + ", Y: " + c.getCenterY());
+                    //   System.out.println("Application started...");
+                    //   System.out.println("\n" + "Circle and Rectangle center coordinates: ");
+                    //  System.out.println("X: " + c.getCenterX() + ", Y: " + c.getCenterY());
 
                     i = 0;
 
